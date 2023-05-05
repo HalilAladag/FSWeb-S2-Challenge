@@ -99,15 +99,15 @@ function cumleKur(
 
 /* (Oto test yok) cumleKur fonksiyonuna yalnızca 1 parametre göndererek "Hello World!" stringini elde edin, 
 sonucu konsolde gözlemleyin */
-
+//console.log(cumleKur("Hello World!"));
 /* (Oto test yok) cumleKur fonksiyonuna yalnızca 2 parametre göndererek "Hello World!" stringini elde edin, 
 sonucu konsolde gözlemleyin */
-
+//console.log(cumleKur("Hello"+" "+"World!"));
 /* (Oto test var) cumleKur fonksiyonuna 5 parametre göndererek "Ben iyi bir yazılımcı olacağım!" stringini 
 elde edin, sonucu `bircumle` değişkenine atayın ve konsolde gözlemleyin */
 var bircumle;
-
-/* kodlar buraya */
+bircumle = cumleKur("Ben ", "iyi ", "bir ", "yazılımcı ", "olacağım!")
+//console.log(bircumle)
 
 //		Sayfanın en üstünde global olarak tanımlanmış `cumleler` adında bir dizi bulunmaktadır. Bu dizinin
 // içinde en çok 5 en az 1 adet string bulunan diziler bulunmaktadır.Aşağıdaki görevlerde aksi
@@ -128,9 +128,11 @@ var bircumle;
 			5. Oluşturulan yeni dizi döndürülecek.
 	*/
 
-function cumlelereDonustur(/* kodlar buraya */) {
-  /* kodlar buraya */
+function cumlelereDonustur(cumleler, ayraç = "," ) {
+  const cumlelerDizisi= cumleler.map((cumle) => cumle.join(ayraç)); 
+  return cumlelerDizisi;
 }
+//console.log(cumlelereDonustur(cumleler, " "))
 
 /* GÖREV 2:
 		paragrafOlustur fonksiyonuna aşağıdakileri uygulayın.
@@ -145,33 +147,37 @@ function cumlelereDonustur(/* kodlar buraya */) {
 			6. Oluşturulan paragraf döndürülecek
 	*/
 
-function paragrafOlustur(/* kodlar buraya */) {
-  /* kodlar buraya */
-}
-
+function paragrafOlustur(cumleler, cumleKur, cumlelereDonustur) {
+  const cumleDizisi = cumlelereDonustur(cumleler, " ");
+  const parametreler = [cumleDizisi[1], cumleDizisi[3], cumleDizisi[5], cumleDizisi[7], cumleDizisi[9]];
+  const paragraf = cumleKur(...parametreler);
+  return paragraf;
+}  
+//console.log(paragrafOlustur(cumleler, cumleKur, cumlelereDonustur));
 /* 	GÖREV 3:
 		Yukarıda isimleri sebzeler ve meyveler olan 2 dizi bulunmaktadır. Bu dizileri kullanarak aşağıdaki görevleri tamamlayın.
 			3a. meyveler dizisinin ilk ve son elemanlarını diziden çıkartın. (.pop ve .shift metodlarını kullanın)
  */
 //3a çözümü
-/* kodlar buraya */
-
+console.log(meyveler.pop());
+console.log(meyveler.shift());
 /* 			3b.  Bir tavşan ve bir kirpi arkadaşlar sebzeler dizimizin peşine düştü. Tavşan => 🐇 , Kirpi=> 🦔 , 
 Tavşanla kirpi sebzeleri ele geçirmek için bir plan kurdular. Tavşan diziye önden saldıracak, kirpi ise 
 arkalarından dolaşacak. Varsayalım ki arkadaşların planları başarılı oldu. Tavşanı dizinin ilk elemanına 🐇, 
 Kirpiyi dizinin son elemanına ekleyin 🦔
  */
 //3b çözümü
-/* kodlar buraya */
-
+sebzeler.unshift("🐇");
+sebzeler.push("🦔");
+//console.log(sebzeler)
 /* 			3c. manav isminde bir dizi oluşturun.`meyveler` dizisi ilk elemanlara, `sebzeler` dizisi son 
 elemanlara denk gelecek şekilde, iki diziyi birleştirip sonucu manav dizisine aktarın. (.concat metodu)
  */
 //3c çözümü
-/* kodlar buraya */
-
-var manav;
-
+var manav = [];
+const birlesikDizi = meyveler.concat(sebzeler);
+manav = manav.concat(birlesikDizi);
+//console.log(manav);
 /* 	GÖREV 4:
 		Yeni kurulmuş bir mesajlaşma startup firması atılan mesajları emojilerle zenginleştirmek istiyor. 
     Bunun için emojiler adında bir nesne tanımlamışlar. Kullanıcının gönderdiği mesaj stringi içinde 
@@ -188,11 +194,14 @@ var manav;
         (.toUpperCase ve .toLowerCase metotlarıı kullanabilirsiniz.)
 			4. elde edilen string döndürülecek
  */
+const atılanMesaj ="Selam :) Nasılsın :D Bugünkü olay çok komikti :P ama sonra çok şaşırdık :o biraz da üzüldük :( ama yine de seviliyorsun <3";
 
-function emojileriDonustur(/* kodlar buraya */) {
-  /* kodlar buraya */
+function emojileriDonustur(atılanMesaj, emojiler) {
+  atılanMesaj = atılanMesaj.replaceAll(":)", "🙂").replaceAll(":(", "😔").replaceAll(":D", "😁").replaceAll(":P", "😛").replaceAll(":o", "😱").replaceAll("<3", "❤️");
+    return atılanMesaj;
 }
-
+//console.log(emojileriDonustur(atılanMesaj));
+      
 /*  Bu satırın aşağısındaki kodları lütfen değiştirmeyin  */
 function sa() {
   console.log("Kodlar çalışıyor");
